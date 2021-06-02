@@ -1,4 +1,5 @@
-const uuid = require('uuid');
+const uuid = require('uuid')
+const url = require('url');
 
 let sessionStore = new Map();
 let sidName = 'sID';
@@ -37,4 +38,13 @@ let sessionManager = function (req, res, next) {
     next();
 }
 
-module.exports = {sessionManager};
+let urlRewrite = function (sessionId) {
+    return function (url) {
+        let newUrl = new URL(url);
+        newUrl.searchParams.append(sidName, sessionId);
+
+        return newUrl.toString();
+    }
+}
+
+module.exports = {sessionManager, urlRewrite};
