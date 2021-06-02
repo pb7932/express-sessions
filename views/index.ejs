@@ -8,5 +8,11 @@
 </head>
 <body>
     <p>This site has been visited <%= global_counter %> times.</p>
+    <p>You have visited this site <%= counter %> times.</p>
+
+    <form action="/" method="GET">
+        <input type="hidden" name="sID" value="<%= sessionId %>">
+        <input type="submit" value="Submit">
+    </form>
 </body>
 </html>

@@ -10,5 +10,8 @@ app.use(express.json());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
+const {sessionManager} = require('./sessions/sessionManager');
+app.use(sessionManager);
+
 app.use('/', indexRouter);
 app.listen(3000);
