@@ -14,7 +14,8 @@ let handleRequest = function(template) {
                 {global_counter: ++global_counter, 
                 counter: ++req.session.counter,
                 sessionId: req.session.id,
-                url: urlRewrite(req.session.id)});
+                url: urlRewrite(req.session.id)
+            });
     };
 };
 

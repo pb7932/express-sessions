@@ -10,11 +10,13 @@
     <p>This site has been visited <%= global_counter %> times.</p>
     <p>You have visited this site <%= counter %> times.</p>
 
-    <a href="<%= url('http://localhost:3000/first')%>">prva</a><br>
-    <a href="<%= url('http://localhost:3000/second')%>">druga</a>
+    <a href="http://localhost:3000/first">prva</a><br>
+    <a href="http://localhost:3000/second">druga</a>
     <br>
     <br>    
     <!--
+    <a href="<%= url('http://localhost:3000/first')%>">prva</a><br>
+    <a href="<%= url('http://localhost:3000/second')%>">druga</a>
     <form action="/" method="GET">
         <input type="hidden" name="sID" value="<%= sessionId %>">
         <input type="submit" value="Submit">

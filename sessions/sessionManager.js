@@ -1,12 +1,13 @@
 const uuid = require('uuid')
 const url = require('url');
+const cookieParser = require('cookie-parser');
 
 let sessionStore = new Map();
 let sidName = 'sID';
 let sessionTimeout = 12000000
 
 let sessionManager = function (req, res, next) {
-    let sessionId = (req.query[sidName] || req.params[sidName]);
+    let sessionId = (req.cookies[sidName] || req.query[sidName] || req.params[sidName]);
 
     console.log('Session: ' + sessionId);
 
@@ -28,6 +29,8 @@ let sessionManager = function (req, res, next) {
     if(!sidRecord) {
         sidRecord = {id: uuid.v4(), created: Date.now()};
         sessionStore.set(sidRecord.id, sidRecord);
+
+        res.cookie(sidName, sidRecord.id, { httpOnly: true });
         console.log('Created new session: ' + sidName + ': ' + sidRecord.id);
     }
 
